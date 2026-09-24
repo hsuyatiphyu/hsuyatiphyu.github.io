@@ -1,5 +1,5 @@
 :root{--ink:#161616;--muted:#666;--paper:#f7f5f0;--card:#fff;--line:#dedbd3;--accent:#355d4a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55}nav{height:78px;max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 28px}nav a{color:inherit;text-decoration:none;margin-left:26px}.logo{font-weight:800;margin:0;font-size:20px}main{max-width:1180px;margin:auto;padding:0 28px}.hero{padding:120px 0 150px;max-width:940px}.eyebrow,.section-head p,.copy span{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--muted)}h1{font-size:clamp(46px,7vw,88px);line-height:1.02;letter-spacing:-.055em;margin:20px 0 30px}.intro{font-size:21px;max-width:700px;color:#4f4f4f}.button{display:inline-block;margin-top:24px;color:inherit;text-decoration:none;border-bottom:1px solid;padding-bottom:4px}.section-head{border-top:1px solid var(--line);padding-top:32px;margin-bottom:42px}.section-head h2,.about h2,.contact h2{font-size:46px;letter-spacing:-.035em;margin:4px 0}.project{display:grid;grid-template-columns:1fr 1.18fr;gap:60px;align-items:center;background:var(--card);border-radius:24px;padding:48px;margin-bottom:34px;overflow:hidden}.project.reverse{grid-template-columns:1.18fr 1fr}.project.reverse .copy{order:2}.project img{width:100%;border-radius:16px;display:block}.copy h3{font-size:46px;letter-spacing:-.04em;margin:10px 0}.copy p{font-size:18px;color:#4e4e4e}.tags{font-size:13px;color:var(--muted);margin:25px 0}.copy a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1px solid}.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:140px 0 100px}.about p{font-size:19px;color:#4e4e4e}.experience{padding:20px 0 120px}.row{display:grid;grid-template-columns:1.2fr 1fr .7fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}.contact{padding:110px 0;border-top:1px solid var(--line)}.contact p{font-size:18px;color:#555}.contact a{display:inline-block;margin-right:25px;color:var(--ink);font-weight:700}footer{max-width:1180px;margin:auto;padding:30px 28px 50px;color:#777;font-size:13px}@media(max-width:760px){.hero{padding:80px 0 100px}.project,.project.reverse{grid-template-columns:1fr;padding:24px;gap:28px}.project.reverse .copy{order:0}.about{grid-template-columns:1fr;gap:20px;padding:90px 0}.row{grid-template-columns:1fr}.copy h3{font-size:38px}nav div a{margin-left:14px}}
-/* ABOUT SECTION WITH PROFILE PHOTO */
+/* ABOUT SECTION */
 
 .about {
   display: grid;
@@ -13,67 +13,46 @@
 }
 
 .about-heading h2 {
-  max-width: 700px;
+  max-width: 650px;
 }
 
 .about-info {
-  display: grid;
-  grid-template-columns: minmax(260px, 1fr) 320px;
-  gap: 50px;
-  align-items: center;
-}
-
-.about-text {
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .about-text p {
   width: 100%;
-  max-width: 420px;
+  max-width: 600px;
   margin: 0;
 }
 
 .about-photo {
-  width: 320px;
+  width: 100%;
+  max-width: 380px;
 }
 
 .about-photo img {
-  width: 320px;
-  height: 400px;
-  object-fit: cover;
-  object-position: center 38%;
-  border-radius: 20px;
   display: block;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  object-position: center 40%;
+  border-radius: 20px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .about {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .about-info {
-    grid-template-columns: 1fr 280px;
-  }
-
-  .about-photo,
-  .about-photo img {
-    width: 280px;
-  }
-}
-
-@media (max-width: 700px) {
-  .about-info {
-    grid-template-columns: 1fr;
-  }
-
   .about-photo {
-    width: 100%;
+    max-width: 320px;
   }
 
   .about-photo img {
-    width: 100%;
-    max-width: 320px;
     height: 400px;
   }
 }
