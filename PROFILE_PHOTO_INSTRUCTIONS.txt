@@ -1,0 +1,1 @@
+IMPORTANT: Add your existing hsu-profile.jpg from your old GitHub repository to the same folder as index.html before publishing. The photo is not included in this ZIP because it was not uploaded here. Keep the original file on GitHub and upload the other files from this ZIP.

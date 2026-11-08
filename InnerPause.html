@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>InnerPause</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F7F3;color:#242424;font-family:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}*{box-sizing:border-box}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-spacing:-0.02em}
+p{margin:0;line-height:1.6}a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid #242424;outline-offset:3px;border-radius:12px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(248,247,243,.94);backdrop-filter:blur(8px);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:space-between;padding:8px 24px}
+.tl{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;font-weight:500;white-space:nowrap;transition:background .2s}.tl:hover{background:#D8D0EE}
+.sn{display:flex;gap:2px;overflow-x:auto;max-width:100%}
+.chip{display:inline-block;padding:6px 12px;border-radius:999px;background:#F8F7F3;border:1px solid #242424;font-size:13px;font-weight:500;color:#242424}
+.slot{height:100%;min-height:160px;border:2px dashed #5B4B8A;border-radius:inherit;background:repeating-linear-gradient(135deg,#F1EEF9 0 14px,#E9E4F5 14px 28px);display:grid;place-items:center;text-align:center;padding:24px;color:#4A3C74;font-weight:500;position:relative}
+.stag{position:absolute;left:16px;top:14px;padding:3px 10px;border-radius:999px;background:#fff;font-size:11px;font-weight:700;color:#242424}
+.slot p{max-width:420px}
+.pt{color:#4A3C74;font-weight:500;border-bottom:1px dashed #5B4B8A}
+.ph{border:2px dashed #5B4B8A;border-radius:28px;padding:24px;background:#fff;color:#4A3C74;font-weight:500}
+.sec{padding:48px 0;scroll-margin-top:72px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B4B8A}
+.tab{min-height:48px;padding:0 22px;border-radius:999px;border:2px solid #242424;font:700 15px 'DM Sans',sans-serif;cursor:pointer;transition:background .25s,transform .2s}.tab:hover{transform:translateY(-2px)}
+.nx{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:40px;border-radius:48px 48px 48px 8px;background:#A8BFA3;transition:transform .3s}.nx:hover{transform:translateY(-6px) rotate(-.5deg)}
+@keyframes enter{from{opacity:0;transform:translateY(18px)}}.pg{animation:enter .7s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@supports (animation-timeline:view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pg,.rv{animation:none!important}.tl,.tab,.nx{transition:none!important}}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;font-weight:700;border:2px solid #242424;cursor:pointer;font-size:16px;font-family:inherit;background-color:var(--bb);color:var(--bc);background-image:linear-gradient(#D8D0EE,#D8D0EE);background-repeat:no-repeat;background-position:left;background-size:0% 100%;transition:background-size .4s ease,color .3s,transform .2s}
+.b-d{--bb:#242424;--bc:#F8F7F3}.b-o{--bb:transparent;--bc:#242424}
+.btn:hover{background-size:100% 100%;color:#242424;transform:translateY(-2px)}.btn:active{transform:translateY(1px)}
+.btn .ba{display:inline-block;transition:transform .25s}.btn:hover .ba{transform:translate(3px,-3px)}
+.zb{display:block;position:relative;width:100%;padding:0;border:1px solid #D5D3CA;border-radius:24px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .35s,box-shadow .35s}
+.zb:hover{transform:translateY(-6px);box-shadow:0 28px 44px -26px rgba(36,36,36,.45)}
+.zb img{width:100%;display:block}
+.zh{position:absolute;right:12px;top:12px;padding:4px 12px;border-radius:999px;background:#F8F7F3;border:1px solid #242424;font-size:12px;font-weight:700;color:#242424;opacity:0;transition:opacity .25s}
+.zb:hover .zh,.zb:focus-visible .zh{opacity:1}
+@media (hover:none){.zh{opacity:1}}
+.cap{font-size:15px;color:#3D3D39;margin-top:12px;max-width:560px}
+.note{background:#fff;border:1px solid #E2E0D8;border-radius:28px;padding:20px 24px}
+.ill{display:inline-block;padding:4px 12px;border-radius:999px;background:#D8D0EE;font-size:12px;font-weight:700;color:#242424}
+.cv{transition:transform .5s}.cvw:hover .cv1{transform:translate(-8px,-6px)}.cvw:hover .cv2{transform:translate(8px,6px)}
+@media (prefers-reduced-motion:reduce){.zb,.cv,.btn,.zh{transition:none!important}}
+.zb{background:#2B2F45;border-color:#2B2F45}
+.fig{margin:0}.fig .zb{border-radius:28px}
+.fc{font-size:15px;color:#3D3D39;margin-top:12px;max-width:520px}
+
+.zb img{height:auto}
+.feat{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;padding:32px 0}
+.feat.rev{flex-direction:row-reverse}
+.num{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(56px,8vw,110px);line-height:.9;color:#A8BFA3;letter-spacing:-.03em}
+</style>
+</helmet>
+<div class="pg" style="width:100%;max-width:1360px;margin:0 auto;padding:0 24px 48px">
+<header class="bar">
+<a class="tl" href="index.html" style="font-weight:700">← All work</a>
+<nav class="sn" aria-label="Case study sections"><a class="tl" href="#problem">Problem</a><a class="tl" href="#features">Features</a></nav>
+<a class="tl" href="index.html" style="font-weight:700">All work →</a>
+</header>
+<main>
+<section style="margin-top:16px;background:#E3DDF5;color:#2B2F45;border-radius:48px 48px 48px 160px;padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;gap:24px">
+<p style="font-weight:700;letter-spacing:.08em;font-size:13px">04 · Spatial Computing · Emotional Wellness · UI/UX</p>
+<h1 style="font-size:clamp(60px,12vw,176px);line-height:.88">InnerPause</h1>
+<p style="font-size:clamp(18px,2vw,22px);max-width:640px">A spatial wellness experience designed to help users manage overwhelming emotions through gentle, interactive activities.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="chip">Hack for Humanity 2026</span><span class="chip">Apple Vision Pro</span><span class="chip">Spatial UX</span><span class="chip">Figma</span><span class="chip">User Flows</span><span class="chip">Interface Design</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn b-d" href="https://devpost.com/software/innerpause" target="_blank" rel="noopener noreferrer" style="min-height:56px;padding:0 32px;font-size:17px">View Project <span class="ba" aria-hidden="true">↗</span></a></div>
+<div style="margin-top:8px"><button class="zb" onClick="{{z_hero}}" aria-label="Enlarge: InnerPause 3-3-3 grounding card and a gentle rem"><img src="./assets/077552e1cefe2d1b31404213ca01de4a.jpg" alt="InnerPause 3-3-3 grounding card and a gentle reminder card floating in a living room, with Suggestions, Short break and Watch a video options"><span class="zh" aria-hidden="true">Enlarge</span></button></div>
+</section>
+
+<section id="problem" class="sec rv" style="display:flex;flex-wrap:wrap;gap:16px 56px"><h2 style="flex:1 1 240px;font-size:clamp(32px,4vw,52px)">The Problem</h2>
+<p style="flex:3 1 480px;font-family:'Fraunces',Georgia,serif;font-size:clamp(22px,2.6vw,32px);line-height:1.35">Calming down is especially hard with ADHD, when thoughts keep racing. Wellness experiences that ask for too much effort or attention can feel out of reach in exactly those moments.</p></section>
+
+<section id="features" class="sec" style="border-top:1px solid #242424"><h2 class="rv" style="font-size:clamp(32px,4vw,52px);margin-bottom:8px">Key Features</h2><div class="feat rv"><div style="flex:3 1 420px"><button class="zb" onClick="{{z_checkin}}" aria-label="Enlarge: InnerPause emotion check-in asking what are you "><img src="./assets/843d6a9e8d3915cc85030d2e90fe46df.jpg" alt="InnerPause emotion check-in asking what are you carrying at the moment, with Anxious, Overwhelmed, Lonely and Angry options"><span class="zh" aria-hidden="true">Enlarge</span></button></div><div style="flex:2 1 260px"><p class="num">01</p><h3 style="font-size:clamp(28px,3.4vw,42px);margin:8px 0 10px">Emotion Check-In</h3><p style="font-size:17px;color:#3D3D39;max-width:420px">Users choose what they are carrying right now: Anxious, Overwhelmed, Lonely, or Angry.</p></div></div><div class="feat rv rev"><div style="flex:3 1 420px"><button class="zb" onClick="{{z_ground}}" aria-label="Enlarge: Close-up of the 3-3-3 Rule for Anxiety card and "><img src="./assets/7d5e102de9ac7bd80c20e0137edd18e3.jpg" alt="Close-up of the 3-3-3 Rule for Anxiety card and the gentle reminder card with Suggestions, Short break and Watch a video buttons"><span class="zh" aria-hidden="true">Enlarge</span></button></div><div style="flex:2 1 260px"><p class="num">02</p><h3 style="font-size:clamp(28px,3.4vw,42px);margin:8px 0 10px">Gentle Grounding</h3><p style="font-size:17px;color:#3D3D39;max-width:420px">An interactive 3-3-3 grounding exercise and a gentle reminder, with options for Suggestions, a Short break, or a video.</p></div></div><div class="feat rv"><div style="flex:3 1 420px"><button class="zb" onClick="{{z_breaks}}" aria-label="Enlarge: InnerPause meditation timer with a meditating fi"><img src="./assets/bab44b4dcd2beb8d62dcf00e830dcc23.jpg" alt="InnerPause meditation timer with a meditating figure and 15, 30, 60 and 180 second options"><span class="zh" aria-hidden="true">Enlarge</span></button></div><div style="flex:2 1 260px"><p class="num">03</p><h3 style="font-size:clamp(28px,3.4vw,42px);margin:8px 0 10px">Mindful Breaks</h3><p style="font-size:17px;color:#3D3D39;max-width:420px">A short meditation timer with 15, 30, 60, or 180 second options keeps breaks manageable.</p></div></div><div class="feat rv rev"><div style="flex:3 1 420px"><button class="zb" onClick="{{z_reflect}}" aria-label="Enlarge: InnerPause reflection prompt asking Feel a littl"><img src="./assets/6ec22c114fa53941e831d86505374121.jpg" alt="InnerPause reflection prompt asking Feel a little lighter now with a happy and a sad face"><span class="zh" aria-hidden="true">Enlarge</span></button></div><div style="flex:2 1 260px"><p class="num">04</p><h3 style="font-size:clamp(28px,3.4vw,42px);margin:8px 0 10px">Emotional Reflection</h3><p style="font-size:17px;color:#3D3D39;max-width:420px">After an activity, a simple happy or sad choice asks, “Feel a little lighter now?”</p></div></div></section>
+</main>
+<a class="nx" href="index.html"><span><span class="lbl" style="color:#242424">Back to</span><span style="display:block;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,7vw,96px);line-height:1">All work</span></span><span aria-hidden="true" style="font-size:56px">→</span></a>
+</div>
+<sc-if value="{{zoomOpen}}" hint-placeholder-val="{{ false }}"><div role="dialog" aria-modal="true" aria-label="Enlarged screenshot" style="position:fixed;inset:0;z-index:50;background:rgba(36,36,36,.92);overflow:auto;padding:24px"><div style="max-width:1600px;margin:0 auto"><button class="btn b-d" onClick="{{closeZoom}}" style="background-color:#F8F7F3;color:#242424">Close ✕</button><img src="{{zoomSrc}}" alt="{{zoomAlt}}" style="width:100%;height:auto;display:block;margin-top:16px;border-radius:16px"></div></div></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { z: '' }; }
+  renderVals() {
+    const IDS = {'hero': './assets/077552e1cefe2d1b31404213ca01de4a.jpg', 'checkin': './assets/843d6a9e8d3915cc85030d2e90fe46df.jpg', 'ground': './assets/7d5e102de9ac7bd80c20e0137edd18e3.jpg', 'breaks': './assets/bab44b4dcd2beb8d62dcf00e830dcc23.jpg', 'reflect': './assets/6ec22c114fa53941e831d86505374121.jpg'};
+    const ALT = {'hero': 'InnerPause 3-3-3 grounding card and a gentle reminder card floating in a living room, with Suggestions, Short break and Watch a video options', 'checkin': 'InnerPause emotion check-in asking what are you carrying at the moment, with Anxious, Overwhelmed, Lonely and Angry options', 'ground': 'Close-up of the 3-3-3 Rule for Anxiety card and the gentle reminder card with Suggestions, Short break and Watch a video buttons', 'breaks': 'InnerPause meditation timer with a meditating figure and 15, 30, 60 and 180 second options', 'reflect': 'InnerPause reflection prompt asking Feel a little lighter now with a happy and a sad face'};
+    const z = this.state.z;
+    const out = { zoomOpen: !!z, zoomSrc: z ? IDS[z] : '', zoomAlt: z ? ALT[z] : '', closeZoom: () => this.setState({ z: '' }) };
+    Object.keys(IDS).forEach((k) => { out['z_' + k] = () => this.setState({ z: k }); });
+    return out;
+  }
+}
+</script>
+</body>
+</html>

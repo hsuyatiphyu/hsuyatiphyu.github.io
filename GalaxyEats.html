@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GalaxyEats</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#F8F7F3;color:#242424;font-family:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}*{box-sizing:border-box}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-spacing:-0.02em}
+p{margin:0;line-height:1.6}a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid #242424;outline-offset:3px;border-radius:12px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(248,247,243,.94);backdrop-filter:blur(8px);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:space-between;padding:8px 24px}
+.tl{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;font-weight:500;white-space:nowrap;transition:background .2s}.tl:hover{background:#D8D0EE}
+.sn{display:flex;gap:2px;overflow-x:auto;max-width:100%}
+.chip{display:inline-block;padding:6px 12px;border-radius:999px;background:#F8F7F3;border:1px solid #242424;font-size:13px;font-weight:500;color:#242424}
+.slot{height:100%;min-height:160px;border:2px dashed #5B4B8A;border-radius:inherit;background:repeating-linear-gradient(135deg,#F1EEF9 0 14px,#E9E4F5 14px 28px);display:grid;place-items:center;text-align:center;padding:24px;color:#4A3C74;font-weight:500;position:relative}
+.stag{position:absolute;left:16px;top:14px;padding:3px 10px;border-radius:999px;background:#fff;font-size:11px;font-weight:700;color:#242424}
+.slot p{max-width:420px}
+.pt{color:#4A3C74;font-weight:500;border-bottom:1px dashed #5B4B8A}
+.ph{border:2px dashed #5B4B8A;border-radius:28px;padding:24px;background:#fff;color:#4A3C74;font-weight:500}
+.sec{padding:48px 0;scroll-margin-top:72px}
+.lbl{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5B4B8A}
+.tab{min-height:48px;padding:0 22px;border-radius:999px;border:2px solid #242424;font:700 15px 'DM Sans',sans-serif;cursor:pointer;transition:background .25s,transform .2s}.tab:hover{transform:translateY(-2px)}
+.nx{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:40px;border-radius:48px 48px 48px 8px;background:#A8BFA3;transition:transform .3s}.nx:hover{transform:translateY(-6px) rotate(-.5deg)}
+@keyframes enter{from{opacity:0;transform:translateY(18px)}}.pg{animation:enter .7s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@supports (animation-timeline:view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pg,.rv{animation:none!important}.tl,.tab,.nx{transition:none!important}}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;font-weight:700;border:2px solid #242424;cursor:pointer;font-size:16px;font-family:inherit;background-color:var(--bb);color:var(--bc);background-image:linear-gradient(#D8D0EE,#D8D0EE);background-repeat:no-repeat;background-position:left;background-size:0% 100%;transition:background-size .4s ease,color .3s,transform .2s}
+.b-d{--bb:#242424;--bc:#F8F7F3}.b-o{--bb:transparent;--bc:#242424}
+.btn:hover{background-size:100% 100%;color:#242424;transform:translateY(-2px)}.btn:active{transform:translateY(1px)}
+.btn .ba{display:inline-block;transition:transform .25s}.btn:hover .ba{transform:translate(3px,-3px)}
+.zb{display:block;position:relative;width:100%;padding:0;border:1px solid #D5D3CA;border-radius:24px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .35s,box-shadow .35s}
+.zb:hover{transform:translateY(-6px);box-shadow:0 28px 44px -26px rgba(36,36,36,.45)}
+.zb img{width:100%;display:block}
+.zh{position:absolute;right:12px;top:12px;padding:4px 12px;border-radius:999px;background:#F8F7F3;border:1px solid #242424;font-size:12px;font-weight:700;color:#242424;opacity:0;transition:opacity .25s}
+.zb:hover .zh,.zb:focus-visible .zh{opacity:1}
+@media (hover:none){.zh{opacity:1}}
+.cap{font-size:15px;color:#3D3D39;margin-top:12px;max-width:560px}
+.note{background:#fff;border:1px solid #E2E0D8;border-radius:28px;padding:20px 24px}
+.ill{display:inline-block;padding:4px 12px;border-radius:999px;background:#D8D0EE;font-size:12px;font-weight:700;color:#242424}
+.cv{transition:transform .5s}.cvw:hover .cv1{transform:translate(-8px,-6px)}.cvw:hover .cv2{transform:translate(8px,6px)}
+@media (prefers-reduced-motion:reduce){.zb,.cv,.btn,.zh{transition:none!important}}
+.zb{background:#EFF9E5;border-color:#DCEBCB}
+.zbp{display:block;width:100%;padding:24px 16px;border:0;border-radius:32px;background:#EFF9E5;cursor:zoom-in;transition:transform .35s,box-shadow .35s}
+.zbp:hover{transform:translateY(-6px);box-shadow:0 28px 44px -26px rgba(36,36,36,.45)}
+.zbp img{display:block;margin:0 auto;max-width:100%;height:auto}
+.pc{background:#fff;border:1px solid #E2E0D8;border-radius:32px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.pc:hover{transform:translateY(-6px);box-shadow:0 24px 40px -26px rgba(36,36,36,.4)}
+.pc .ib{background:#EFF9E5;height:170px;display:grid;place-items:center}
+.pc .ib img{height:130px;width:auto;max-width:80%;object-fit:contain}
+.st{background:#FBE9CF;border-radius:32px 32px 32px 8px;padding:24px}
+.big{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.02em;color:#3A1F0D}
+.src{font-style:italic;font-size:14px;color:#55554F}
+table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:620px}
+.cmp th,.cmp td{padding:12px 10px;text-align:center;border-bottom:1px solid #DCEBCB;font-size:15px}
+.cmp th{font-weight:700;vertical-align:bottom}
+.cmp td:first-child,.cmp th:first-child{text-align:left;font-weight:500}
+.cmp .us{background:#D8D0EE}
+.cmp img{height:52px;width:auto;display:block;margin:0 auto 6px;border-radius:12px}
+.yes{color:#256B33;font-weight:700;font-size:20px}.no{color:#B3261E;font-weight:700;font-size:20px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;font-weight:700;border:2px solid #242424;cursor:pointer;font-size:16px;font-family:inherit;background-color:var(--bb);color:var(--bc);background-image:linear-gradient(#D8D0EE,#D8D0EE);background-repeat:no-repeat;background-position:left;background-size:0% 100%;transition:background-size .4s ease,color .3s,transform .2s}
+.b-d{--bb:#242424;--bc:#F8F7F3}.b-o{--bb:transparent;--bc:#242424}
+.btn:hover{background-size:100% 100%;color:#242424;transform:translateY(-2px)}.btn:active{transform:translateY(1px)}
+.btn .ba{display:inline-block;transition:transform .25s}.btn:hover .ba{transform:translate(3px,-3px)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none!important}}
+@media (prefers-reduced-motion:reduce){.pc,.zbp{transition:none!important}}
+</style>
+</helmet>
+<div class="pg" style="width:100%;max-width:1360px;margin:0 auto;padding:0 24px 48px">
+<header class="bar">
+<a class="tl" href="index.html" style="font-weight:700">← All work</a>
+<nav class="sn" aria-label="Case study sections"><a class="tl" href="#problem">Problem</a><a class="tl" href="#research">Research</a><a class="tl" href="#solution">Solution</a><a class="tl" href="#warnings">Warnings</a></nav>
+<a class="tl" href="MindOrbit.html" style="font-weight:700">Next: MindOrbit →</a>
+</header>
+<main>
+<section style="margin-top:16px;background:#FBE9CF;color:#3A1F0D;border-radius:48px 48px 48px 160px;padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;gap:24px">
+<p style="font-weight:700;letter-spacing:.08em;font-size:13px">02 · Food Delivery · Accessibility · Product Redesign</p>
+<h1 style="font-size:clamp(60px,12vw,176px);line-height:.88">GalaxyEats</h1>
+<p style="font-size:clamp(18px,2vw,22px);max-width:640px">A redesigned food-ordering experience with personalized health filters, AI-assisted guidance, and meal suggestions for users with food allergies and chronic health conditions.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="chip">Figma</span><span class="chip">UI/UX Design</span><span class="chip">Prototyping</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn b-o" href="https://drive.google.com/file/d/1U-AyNsoaCpHX2D0ghR99F70rksunBBU2/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="min-height:56px">View Presentation <span class="ba" aria-hidden="true">↗</span></a></div>
+</section>
+
+<section id="problem" class="sec" style="border-top:1px solid #242424"><h2 class="rv" style="font-size:clamp(32px,4vw,52px);margin-bottom:24px">The Problem</h2>
+<p class="rv" style="font-size:clamp(20px,2.4vw,28px);line-height:1.45;max-width:900px;margin-bottom:28px;font-family:'Fraunces',Georgia,serif">Millions of people with chronic health conditions and allergies use food delivery apps, yet those platforms don’t provide personalized guidance to help them make safe and informed meal choices.</p>
+<div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px"><div class="pc"><div class="ib"><img src="./assets/899832e0b26245f3b84aee3e17da1bcb.jpg" alt="Illustration of a person confused by tangled lines"></div><div style="padding:20px 22px 24px"><h3 style="font-size:22px">Unclear Ingredient Info</h3><p style="margin-top:8px;font-size:15px;color:#3D3D39">Users often can’t tell what’s in their food, making it risky for those with allergies or health conditions.</p></div></div><div class="pc"><div class="ib"><img src="./assets/ca7fd973afac7bbc777f212aaa9c5efe.jpg" alt="Illustration of a hand holding a phone with a question mark"></div><div style="padding:20px 22px 24px"><h3 style="font-size:22px">No Personalized Filters</h3><p style="margin-top:8px;font-size:15px;color:#3D3D39">There’s no way to filter meals based on medical advice, such as for diabetes, hypertension, or kidney disease.</p></div></div><div class="pc"><div class="ib"><img src="./assets/a654b8ba78d8d423a1859ea83cf1720b.jpg" alt="Illustration of a gauge"></div><div style="padding:20px 22px 24px"><h3 style="font-size:22px">Low Confidence</h3><p style="margin-top:8px;font-size:15px;color:#3D3D39">Users with chronic conditions feel unsure and anxious when ordering meals due to lack of guidance.</p></div></div><div class="pc"><div class="ib"><img src="./assets/9cad770c411620a334b920612c85b27e.jpg" alt="Illustration of fast food on a tray"></div><div style="padding:20px 22px 24px"><h3 style="font-size:22px">Not Health-Friendly</h3><p style="margin-top:8px;font-size:15px;color:#3D3D39">Delivery apps mainly promote fast food, making healthy and safe choices harder to find.</p></div></div></div></section>
+
+<section id="research" class="sec" style="border-top:1px solid #242424"><h2 class="rv" style="font-size:clamp(32px,4vw,52px);margin-bottom:24px">Research &amp; Insights</h2>
+<p class="rv" style="font-size:18px;margin-bottom:16px">According to the research, we found that</p>
+<div class="rv" style="display:flex;flex-wrap:wrap;gap:16px"><div class="st" style="flex:1 1 240px"><p class="big">4 out of 10</p><p style="margin-top:10px;font-size:16px">Gen Z (age 13-28) and Millennial respondents reported living with a chronic condition.</p><p class="src" style="margin-top:8px">One Medical</p></div><div class="st" style="flex:1 1 240px"><p class="big">53.8%</p><p style="margin-top:10px;font-size:16px">of adults (age 18-34) had at least one chronic condition, and 22.3% had more than one condition.</p><p class="src" style="margin-top:8px">Watson et al.</p></div><div class="st" style="flex:1 1 240px"><p class="big">Nearly 11%</p><p style="margin-top:10px;font-size:16px">of U.S. adults have at least one food allergy.</p><p class="src" style="margin-top:8px">FARE</p></div><div class="st" style="flex:1 1 240px"><p class="big">Twice a week</p><p style="margin-top:10px;font-size:16px">is how often young adults (age 18-25) used food delivery apps, approximately.</p><p class="src" style="margin-top:8px">Buettner et al.</p></div></div>
+<div class="rv" style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;margin-top:48px">
+<div style="flex:1 1 300px;max-width:420px"><button class="zbp" onClick="{{z_gap}}" aria-label="Enlarge: Uber Eats dietary filter showing only Vegetarian, "><img src="./assets/596bc91e0d7bc508edd5403c33d9812e.jpg" alt="Uber Eats dietary filter showing only Vegetarian, Vegan, Gluten-free and Halal" style="width:420px"></button></div>
+<div style="flex:2 1 360px;display:flex;flex-direction:column;gap:16px"><p class="lbl">Observe the gap</p>
+<p style="font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,3vw,36px);line-height:1.25">Uber Eats has only a few basic dietary filters and doesn’t support filtering based on food-related health conditions.</p>
+<p style="font-size:18px;color:#3D3D39">This makes it risky for users with chronic conditions or allergies to confidently order meals.</p></div></div>
+<div class="rv" style="margin-top:48px"><p class="lbl" style="margin-bottom:12px">Why us</p>
+<div style="background:#EFF9E5;border-radius:32px;padding:16px 20px;overflow-x:auto"><table class="cmp"><thead><tr><th scope="col"></th><th scope="col"><img src="./assets/bd14435efa2a4f89004a77493d6b4c30.jpg" alt="">MyNetDiary</th><th scope="col"><img src="./assets/23d563ca5aaaf9d97778ad981bd0cdcc.jpg" alt="">Yuka</th><th scope="col"><img src="./assets/0b1debfa4852f7fdfb7c1ae706a6e708.jpg" alt="">UberEats</th><th scope="col" class="us"><img src="./assets/1be68778faeca3e1ecd7b9758bb26a65.jpg" alt="">UberEats with our solution</th></tr></thead><tbody><tr><td>Food Ordering</td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td class="us"><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td></tr><tr><td>Health-Based Filtering</td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td class="us"><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td></tr><tr><td>Allergy Warnings</td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td class="us"><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td></tr><tr><td>Chatbot Guidance</td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td class="us"><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td></tr><tr><td>Delivery</td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td><span class="no" aria-hidden="true">✕</span><span style="position:absolute;left:-9999px">No</span></td><td><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td><td class="us"><span class="yes" aria-hidden="true">✓</span><span style="position:absolute;left:-9999px">Yes</span></td></tr></tbody></table></div></div></section>
+
+<section id="solution" class="sec" style="border-top:1px solid #242424"><h2 class="rv" style="font-size:clamp(32px,4vw,52px);margin-bottom:24px">The Solution</h2>
+<p class="rv" style="font-size:18px;max-width:700px;margin-bottom:24px;color:#3D3D39">Users choose their diagnoses or allergies once, and the menu adapts to them.</p>
+<div class="rv" style="display:flex;flex-wrap:wrap;gap:24px">
+<div style="flex:1 1 400px"><span class="lbl" style="display:block;margin-bottom:10px">01 Personalize</span><button class="zbp" onClick="{{z_ph1}}" aria-label="Enlarge: GalaxyEats screen asking who is eating, with diagn"><img src="./assets/6fdbe61920c62ed61cdfab0762cb2424.jpg" alt="GalaxyEats screen asking who is eating, with diagnoses and allergies to select" style="width:440px"></button><p class="cap">Select any diagnoses or allergies at the start. This simple step personalizes the food experience.</p></div>
+<div style="flex:1 1 400px"><span class="lbl" style="display:block;margin-bottom:10px">02 Scan the menu</span><button class="zbp" onClick="{{z_ph2}}" aria-label="Enlarge: GalaxyEats menu with green and red dots marking su"><img src="./assets/2f72cd92258d713b4c016f6522db45af.jpg" alt="GalaxyEats menu with green and red dots marking suitable and unfavorable items" style="width:440px"></button><p class="cap"><span class="dot" style="background:#2E9E4A"></span>Green dot: suitable. <span class="dot" style="background:#C8102E;margin-left:12px"></span>Red dot: unfavorable. Users decide quickly without reading every ingredient.</p></div></div></section>
+
+<section id="warnings" class="sec" style="border-top:1px solid #242424"><h2 class="rv" style="font-size:clamp(32px,4vw,52px);margin-bottom:24px">Smart Warnings &amp; Recommendations</h2>
+<div class="rv" style="display:flex;flex-wrap:wrap;gap:32px;align-items:center">
+<div style="flex:1 1 360px;max-width:520px"><button class="zbp" onClick="{{z_warn}}" aria-label="Enlarge: GalaxyEats warning screen with a red warning banne"><img src="./assets/01f5aea88da243a8c3be820ecaa13eb4.jpg" alt="GalaxyEats warning screen with a red warning banner, healthier meal suggestions with calories, and Ignore and Go Back buttons" style="width:440px"></button></div>
+<div style="flex:1 1 360px;display:flex;flex-direction:column;gap:14px">
+<div class="note"><p class="lbl">When it appears</p><p style="margin-top:6px">After a user selects a menu item marked with a red dot that may be unsuitable for their chronic health conditions.</p></div>
+<div class="note"><p class="lbl">Personalized warning</p><p style="margin-top:6px">Helps users make informed dietary choices.</p></div>
+<div class="note"><p class="lbl">Alternative meals</p><p style="margin-top:6px">Smart suggestions with a quick calorie comparison support better decisions.</p></div>
+<div style="display:flex;flex-wrap:wrap;gap:14px"><div class="note" style="flex:1 1 200px"><p class="lbl">Go Back, primary</p><p style="margin-top:6px">Encourages users to reconsider and return to healthier menu options.</p></div>
+<div class="note" style="flex:1 1 200px"><p class="lbl">Ignore, secondary</p><p style="margin-top:6px">Lets users dismiss the warning and proceed at their own discretion.</p></div></div>
+<p style="font-size:14px;color:#55554F">Concept design. Warnings and meal suggestions have not been clinically validated.</p></div></div></section>
+</main>
+<a class="nx" href="MindOrbit.html"><span><span class="lbl" style="color:#242424">Next project</span><span style="display:block;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,7vw,96px);line-height:1">MindOrbit</span></span><span aria-hidden="true" style="font-size:56px">→</span></a>
+</div>
+<sc-if value="{{zoomOpen}}" hint-placeholder-val="{{ false }}"><div role="dialog" aria-modal="true" aria-label="Enlarged screenshot" style="position:fixed;inset:0;z-index:50;background:rgba(36,36,36,.9);overflow:auto;padding:24px"><div style="max-width:900px;margin:0 auto"><button class="btn" onClick="{{closeZoom}}">Close ✕</button><img src="{{zoomSrc}}" alt="{{zoomAlt}}" style="width:100%;display:block;margin-top:16px;border-radius:16px"></div></div></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":4300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { z: '' }; }
+  renderVals() {
+    const IDS = {'warn': './assets/01f5aea88da243a8c3be820ecaa13eb4.jpg', 'gap': './assets/596bc91e0d7bc508edd5403c33d9812e.jpg', 'ph1': './assets/6fdbe61920c62ed61cdfab0762cb2424.jpg', 'ph2': './assets/2f72cd92258d713b4c016f6522db45af.jpg'};
+    const ALT = {'warn': 'GalaxyEats warning screen with a red warning banner, healthier meal suggestions with calories, and Ignore and Go Back buttons', 'gap': 'Uber Eats dietary filter showing only Vegetarian, Vegan, Gluten-free and Halal', 'ph1': 'GalaxyEats screen asking who is eating, with diagnoses and allergies to select', 'ph2': 'GalaxyEats menu with green and red dots marking suitable and unfavorable items'};
+    const z = this.state.z;
+    const out = { zoomOpen: !!z, zoomSrc: z ? IDS[z] : '', zoomAlt: z ? ALT[z] : '', closeZoom: () => this.setState({ z: '' }) };
+    Object.keys(IDS).forEach((k) => { out['z_' + k] = () => this.setState({ z: k }); });
+    return out;
+  }
+}
+</script>
+</body>
+</html>
